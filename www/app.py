@@ -12,7 +12,7 @@ from aiohttp import web
 def index(request):
     return web.Response(body=b'<h1>cy_webapp<h1>', content_type='text/html')
 
-@asyncio.coroutines
+@asyncio.coroutine
 def init(loop):
     app = web.Application(loop=loop)
     app.router.add_route('GET', '/', index)
@@ -23,4 +23,3 @@ def init(loop):
 loop = asyncio.get_event_loop()
 loop.run_until_complete(init(loop))
 loop.run_forever()
-
